@@ -1,554 +1,661 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Excel Shortcuts - Comprehensive Guide</title>
-    <style>
-      :root {
-        --primary: #217346;
-        --secondary: #1e6b35;
-        --light: #f3f3f3;
-        --dark: #333;
-        --table-header: #e6f2ea;
-        --table-alt: #f9fcfa;
-        --table-border: #c3e6d1;
-        --shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-      }
 
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Segoe UI", sans-serif;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Excel Shortcuts - Comprehensive Guide</title>
+  <style>
+    :root {
+      --primary: #217346;
+      --secondary: #1e6b35;
+      --light: #f3f3f3;
+      --dark: #333;
+      --table-header: #e6f2ea;
+      --table-alt: #f9fcfa;
+      --table-border: #c3e6d1;
+      --shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
 
-      body {
-        background-color: #f8f9fa;
-        line-height: 1.6;
-        color: var(--dark);
-      }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", sans-serif;
+    }
 
+    body {
+      background-color: #f8f9fa;
+      line-height: 1.6;
+      color: var(--dark);
+      font-size: 16px;
+    }
+
+    /* Mobile-first container */
+    .container {
+      width: 100%;
+      padding: 0 15px;
+      margin: 0 auto;
+    }
+
+    header {
+      background-color: var(--primary);
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow);
+      width: 100%;
+    }
+
+    .site-title {
+      font-size: 1.5rem;
+      text-align: center;
+      font-weight: 600;
+      padding: 10px 0;
+    }
+
+    nav {
+      background-color: var(--secondary);
+      padding: 10px 0;
+      /* width: 100%; */
+    }
+
+    /* Mobile-first navigation */
+    .nav-container {
+      display: block;
+      flex-direction: column;
+      align-items: center;
+      /* width: 100%; */
+      /* gap: 10px; */
+      /* Directly sets space between all buttons */
+
+    }
+
+    .nav-btn {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      padding: 12px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      font-size: 1rem;
+      width: 100%;
+      margin: 5px 0;
+      text-align: center;
+      /* Increase touch target size for mobile */
+      min-height: 44px;
+    }
+
+    .nav-btn:hover {
+      background-color: #185a33;
+    }
+
+    .nav-btn.active {
+      background-color: #164d2d;
+      font-weight: bold;
+    }
+
+    /* Mobile-first cards */
+    .category-cards {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 15px;
+      margin: 20px 0;
+    }
+
+    .category-card {
+      background-color: white;
+      border-radius: 8px;
+      padding: 15px;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s;
+      cursor: pointer;
+    }
+
+    .category-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .category-card h3 {
+      color: var(--primary);
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+    }
+
+    .section {
+      margin: 30px 0;
+      display: none;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    .section-title {
+      color: var(--primary);
+      margin-bottom: 15px;
+      font-size: 1.5rem;
+      border-bottom: 2px solid var(--primary);
+      padding-bottom: 8px;
+    }
+
+    /* Mobile-first tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 15px 0;
+      background-color: white;
+      box-shadow: var(--shadow);
+      border-radius: 8px;
+      overflow-x: auto;
+      display: block;
+    }
+
+    th,
+    td {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid var(--table-border);
+      font-size: 0.9rem;
+    }
+
+    th {
+      background-color: var(--table-header);
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    tr:nth-child(even) {
+      background-color: var(--table-alt);
+    }
+
+    tr:hover {
+      background-color: #e9f5ef;
+    }
+
+    .home-section {
+      text-align: center;
+      margin: 30px 0;
+    }
+
+    .home-title {
+      font-size: 1.8rem;
+      color: var(--primary);
+      margin-bottom: 15px;
+    }
+
+    /* Mobile-friendly back to top button */
+    .back-to-top {
+      position: fixed;
+      bottom: 15px;
+      right: 15px;
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      text-align: center;
+      line-height: 44px;
+      cursor: pointer;
+      display: none;
+      box-shadow: var(--shadow);
+      z-index: 99;
+      font-size: 1.2rem;
+      /* Ensure it's easy to tap on mobile */
+      touch-action: manipulation;
+    }
+
+    footer {
+      background-color: var(--primary);
+      color: white;
+      text-align: center;
+      padding: 15px 0;
+      margin-top: 30px;
+      width: 100%;
+    }
+
+    #search-input {
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      width: 100%;
+      font-size: 1rem;
+      margin: 15px auto;
+      display: block;
+      /* Ensure it's easy to tap on mobile */
+      min-height: 44px;
+    }
+
+    /* Tablet and larger screens */
+    @media (min-width: 576px) {
       .container {
-        max-width: 1200px;
-        margin: 0 auto;
-      }
-
-      header {
-        background-color: var(--primary);
-        color: white;
-        position: sticky;
-        top: 0;
-        z-index: 100;
-        box-shadow: var(--shadow);
-      }
-
-      .site-title {
-        font-size: 2rem;
-        text-align: center;
-        font-weight: 600;
-      }
-
-      nav {
-        background-color: var(--secondary);
-        padding: 10px 0;
+        max-width: 540px;
       }
 
       .nav-container {
-        display: flex;
+        gap: 8px;
+      }
+
+      .nav-btn {
+        width: auto;
+        margin: 3px;
+      }
+
+      .category-cards {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+      }
+
+      .home-title {
+        font-size: 2rem;
+      }
+    }
+
+    /* Medium devices */
+    @media (min-width: 768px) {
+      .container {
+        max-width: 720px;
+      }
+
+      .site-title {
+        font-size: 1.8rem;
+      }
+
+      .nav-container {
+        flex-direction: row;
         justify-content: center;
         flex-wrap: wrap;
         gap: 10px;
       }
 
       .nav-btn {
-        background-color: var(--primary);
-        color: white;
-        border: none;
-        padding: 8px 15px;
-        border-radius: 4px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-        font-size: 0.9rem;
-      }
-
-      .nav-btn:hover {
-        background-color: #185a33;
-      }
-
-      .nav-btn.active {
-        background-color: #164d2d;
-        font-weight: bold;
+        width: auto;
+        margin: 0;
       }
 
       .category-cards {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
         gap: 20px;
-        margin: 30px 0;
-      }
-
-      .category-card {
-        background-color: white;
-        border-radius: 8px;
-        padding: 20px;
-        box-shadow: var(--shadow);
-        transition: transform 0.3s;
-        cursor: pointer;
-      }
-
-      .category-card:hover {
-        transform: translateY(-5px);
-      }
-
-      .category-card h3 {
-        color: var(--primary);
-        margin-bottom: 10px;
-        font-size: 1.3rem;
-      }
-
-      .section {
-        margin: 40px 0;
-        display: none;
-      }
-
-      .section.active {
-        display: block;
       }
 
       .section-title {
-        color: var(--primary);
-        margin-bottom: 20px;
-        font-size: 1.8rem;
-        border-bottom: 2px solid var(--primary);
-        padding-bottom: 10px;
+        font-size: 1.6rem;
       }
 
-      table {
-        width: 100%;
-        border-collapse: collapse;
-        margin: 20px 0;
-        background-color: white;
-        box-shadow: var(--shadow);
-        border-radius: 8px;
-        overflow: hidden;
+      .home-title {
+        font-size: 2.2rem;
       }
 
       th,
       td {
         padding: 12px 15px;
-        text-align: left;
-        border-bottom: 1px solid var(--table-border);
+        font-size: 1rem;
+      }
+    }
+
+    /* Large devices */
+    @media (min-width: 992px) {
+      .container {
+        max-width: 960px;
       }
 
-      th {
-        background-color: var(--table-header);
-        color: var(--primary);
-        font-weight: 600;
+      .site-title {
+        font-size: 2rem;
       }
 
-      tr:nth-child(even) {
-        background-color: var(--table-alt);
+      .category-cards {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
       }
 
-      tr:hover {
-        background-color: #e9f5ef;
-      }
-
-      .home-section {
-        text-align: center;
-        margin: 40px 0;
+      .section-title {
+        font-size: 1.8rem;
       }
 
       .home-title {
         font-size: 2.5rem;
-        color: var(--primary);
-        margin-bottom: 20px;
       }
 
-      .back-to-top {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        background-color: var(--primary);
-        color: white;
-        border: none;
-        border-radius: 50%;
-        width: 50px;
-        height: 50px;
-        text-align: center;
-        line-height: 50px;
-        cursor: pointer;
-        display: none;
-        box-shadow: var(--shadow);
-        z-index: 99;
-        font-size: 1.5rem;
+      table {
+        display: table;
+        overflow-x: initial;
       }
+    }
 
-      footer {
-        background-color: var(--primary);
-        color: white;
-        text-align: center;
-        padding: 20px 0;
-        margin-top: 40px;
+    /* Extra large devices */
+    @media (min-width: 1200px) {
+      .container {
+        max-width: 1140px;
       }
+    }
+  </style>
+</head>
 
-      #search-input {
-        padding: 10px 15px;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        width: 100%;
-        max-width: 500px;
-        font-size: 1rem;
-        margin: 20px auto;
-        display: block;
-      }
-
-      @media (max-width: 768px) {
-        .nav-container {
-          flex-direction: column;
-          align-items: center;
-        }
-
-        .nav-btn {
-          width: 90%;
-          text-align: center;
-          margin: 5px 0;
-        }
-
-        .category-cards {
-          grid-template-columns: 1fr;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <header>
-      <div class="container">
-        <!-- <h1 class="site-title">Excel Shortcuts - Comprehensive Guide</h1> -->
-      </div>
-      <nav>
-        <div class="container nav-container" id="nav-buttons">
-          <!-- Navigation buttons will be generated by JavaScript -->
-        </div>
-      </nav>
-    </header>
-
+<body>
+  <header>
     <div class="container">
-      <input
-        type="text"
-        id="search-input"
-        placeholder="Search for shortcuts..."
-      />
-
-      <section id="home" class="section active">
-        <div class="home-section">
-          <h2 class="home-title">Master Excel with Keyboard Shortcuts</h2>
-          <p>
-            Click on any category below to see its shortcuts or use the
-            navigation bar above
-          </p>
-        </div>
-
-        <div class="category-cards" id="category-cards">
-          <!-- Category cards will be generated by JavaScript -->
-        </div>
-      </section>
-
-      <!-- All sections will be generated by JavaScript -->
-      <div id="sections-container"></div>
+      <!-- <h1 class="site-title">Excel Shortcuts - Comprehensive Guide</h1> -->
     </div>
-
-    <a href="#" class="back-to-top" id="back-to-top">↑</a>
-
-    <footer>
-      <div class="container">
-        <p>Excel Shortcuts - Comprehensive Guide</p>
+    <nav>
+      <div class="container nav-container" id="nav-buttons">
+        <!-- Navigation buttons will be generated by JavaScript -->
       </div>
-    </footer>
+    </nav>
+  </header>
 
-    <script>
-      // Data structure to store all shortcut categories and their shortcuts
-      const shortcutData = {
-        navigation: {
-          title: "Navigation Shortcuts",
-          description:
-            "Quickly move around your worksheet with these navigation shortcuts",
-          shortcuts: [
-            ["Arrow Keys", "Move one cell in the direction of the arrow"],
-            ["Tab", "Move one cell to the right"],
-            ["Shift+Tab", "Move one cell to the left"],
-            ["Enter", "Move one cell down"],
-            ["Shift+Enter", "Move one cell up"],
-            ["Home", "Move to beginning of row"],
-            ["Ctrl+Home", "Move to beginning of worksheet (cell A1)"],
-            ["Ctrl+End", "Move to last used cell in worksheet"],
-            ["Page Up", "Move one screen up"],
-            ["Page Down", "Move one screen down"],
-            ["Alt+Page Up", "Move one screen to the left"],
-            ["Alt+Page Down", "Move one screen to the right"],
-            ["Ctrl+Arrow Key", "Move to the edge of current data region"],
-            ["Ctrl+G or F5", "Open Go To dialog box"],
-            [
-              "F6",
-              "Switch between worksheet, ribbon, task pane, and zoom controls",
-            ],
-            ["Ctrl+Tab", "Switch between open workbooks"],
-          ],
-        },
-        selection: {
-          title: "Selection Shortcuts",
-          description: "Efficiently select cells, rows, columns, and ranges",
-          shortcuts: [
-            ["Shift+Arrow Key", "Extend selection by one cell"],
-            [
-              "Ctrl+Shift+Arrow Key",
-              "Extend selection to last cell with data in row/column",
-            ],
-            ["Shift+Home", "Select from current cell to beginning of row"],
-            [
-              "Ctrl+Shift+Home",
-              "Select from current cell to beginning of worksheet",
-            ],
-            [
-              "Ctrl+Shift+End",
-              "Select from current cell to last used cell in worksheet",
-            ],
-            ["Ctrl+Spacebar", "Select entire column"],
-            ["Shift+Spacebar", "Select entire row"],
-            ["Ctrl+A", "Select entire worksheet"],
-            ["Ctrl+Shift+O", "Select all cells with comments"],
-            ["Ctrl+\\", "Select visible cells in current row"],
-            ["Ctrl+Shift+\\", "Select visible cells in current column"],
-            ["Ctrl+Shift+*", "Select current region around active cell"],
-            ["Alt+;", "Select visible cells only"],
-            ["F8", "Turn extend mode on/off (for selection)"],
-            ["Shift+F8", "Add another range to selection (non-adjacent)"],
-          ],
-        },
-        editing: {
-          title: "Editing Shortcuts",
-          description: "Edit and manipulate cell content faster",
-          shortcuts: [
-            ["F2", "Edit the active cell"],
-            ["Alt+Enter", "Start a new line in the same cell"],
-            ["Enter", "Complete cell entry and move down"],
-            ["Esc", "Cancel cell entry"],
-            [
-              "Backspace",
-              "Delete character to the left of insertion point or delete selection",
-            ],
-            [
-              "Delete",
-              "Delete character to the right of insertion point or delete selection",
-            ],
-            ["Ctrl+Delete", "Delete text to end of line"],
-            ["Ctrl+Z", "Undo last action"],
-            ["Ctrl+Y", "Redo last action"],
-            ["Ctrl+X", "Cut selected cells"],
-            ["Ctrl+C", "Copy selected cells"],
-            ["Ctrl+V", "Paste content from clipboard"],
-            ["Ctrl+Alt+V", "Open Paste Special dialog box"],
-            ["Ctrl+D", "Fill down (copy content from cell above)"],
-            ["Ctrl+R", "Fill right (copy content from cell to left)"],
-            ["Ctrl+'", "Copy formula from cell above"],
-            ["Ctrl+-", "Delete selected rows or columns"],
-            ["Ctrl+Shift++", "Insert new rows or columns"],
-            ["Ctrl+;", "Enter current date"],
-            ["Ctrl+Shift+:", "Enter current time"],
-            ["Alt+Down Arrow", "Display AutoComplete list"],
-            ["Ctrl+K", "Insert hyperlink"],
-          ],
-        },
-        formatting: {
-          title: "Formatting Shortcuts",
-          description: "Apply formatting to cells quickly",
-          shortcuts: [
-            ["Ctrl+1", "Open Format Cells dialog box"],
-            ["Ctrl+B", "Apply or remove bold formatting"],
-            ["Ctrl+I", "Apply or remove italic formatting"],
-            ["Ctrl+U", "Apply or remove underline"],
-            ["Ctrl+5", "Apply or remove strikethrough"],
-            ["Alt+'", "Display Style dialog box"],
-            ["Ctrl+Shift+~", "Apply General number format"],
-            ["Ctrl+Shift+$", "Apply Currency format with two decimal places"],
-            ["Ctrl+Shift+%", "Apply Percentage format with no decimal places"],
-            [
-              "Ctrl+Shift+^",
-              "Apply Scientific number format with two decimal places",
-            ],
-            ["Ctrl+Shift+#", "Apply Date format (day, month, year)"],
-            ["Ctrl+Shift+@", "Apply Time format (hour:minute AM/PM)"],
-            [
-              "Ctrl+Shift+!",
-              "Apply Number format with two decimal places and thousands separator",
-            ],
-            ["Ctrl+Shift+&", "Apply outline border to selected cells"],
-            ["Ctrl+Shift+_", "Remove outline border"],
-            ["Ctrl+9", "Hide selected rows"],
-            ["Ctrl+0", "Hide selected columns"],
-            ["Ctrl+Shift+9", "Unhide rows"],
-            ["Ctrl+Shift+0", "Unhide columns"],
-          ],
-        },
-        data: {
-          title: "Data & Cell Content",
-          description: "Work with data more efficiently",
-          shortcuts: [
-            ["Alt+Down Arrow", "Open dropdown list for current cell"],
-            ["Alt+= or Alt+Shift+=", "AutoSum selected cells"],
-            ["Ctrl+Shift+L", "Toggle filter"],
-            ["Ctrl+T", "Create or format a table"],
-            ["Shift+F2", "Insert or edit cell comment"],
-            ["F4", "Repeat last action"],
-            ["F7", "Check spelling"],
-            ["Shift+F3", "Open the Insert Function dialog box"],
-            ["Ctrl+Shift+U", "Expand or collapse formula bar"],
-            ["Ctrl+F3", "Define a name"],
-            ["Ctrl+E", "Flash Fill"],
-          ],
-        },
-        formula: {
-          title: "Formula Shortcuts",
-          description: "Create and manage formulas like a pro",
-          shortcuts: [
-            ["=", "Start a formula"],
-            ["Alt+=", "Insert AutoSum formula"],
-            ["Ctrl+Shift+Enter", "Enter array formula"],
-            ["F3", "Paste a defined name into a formula"],
-            ["F9", "Calculate all worksheets in all open workbooks"],
-            ["Shift+F9", "Calculate active worksheet"],
-            ["Ctrl+Alt+F9", "Force calculate all worksheets"],
-            ["Ctrl+Alt+Shift+F9", "Recalculate all formulas"],
-            ["Ctrl+`", "Toggle between displaying cell values and formulas"],
-            [
-              "Ctrl+[",
-              "Select all cells directly referenced by formulas in selection",
-            ],
-            [
-              "Ctrl+]",
-              "Select cells containing formulas that reference the active cell",
-            ],
-            ["F4 (in formula)", "Cycle through absolute/relative references"],
-          ],
-        },
-        workbook: {
-          title: "Workbook & Worksheet",
-          description: "Manage your workbooks and worksheets",
-          shortcuts: [
-            ["Ctrl+N", "Create a new workbook"],
-            ["Ctrl+O", "Open existing workbook"],
-            ["Ctrl+S", "Save workbook"],
-            ["F12", "Save As"],
-            ["Ctrl+W", "Close workbook"],
-            ["Ctrl+F4", "Close Excel"],
-            ["Ctrl+P", "Print"],
-            ["Ctrl+F2", "Print preview"],
-            ["F11 or Alt+F1", "Create chart from selected data"],
-            ["Alt+F8", "Open Macro dialog box"],
-            ["Alt+F11", "Open Visual Basic Editor"],
-            ["Ctrl+Page Up", "Move to previous worksheet"],
-            ["Ctrl+Page Down", "Move to next worksheet"],
-            ["Shift+F11", "Insert new worksheet"],
-            ["Ctrl+Shift+Tab", "Switch to previous workbook"],
-            ["Alt+Shift+F1", "Insert new worksheet"],
-            ["Ctrl+F", "Find"],
-            ["Ctrl+H", "Replace"],
-          ],
-        },
-        display: {
-          title: "Display & View",
-          description: "Control how Excel displays your data",
-          shortcuts: [
-            ["F11", "Create a chart"],
-            ["Alt+F1", "Create a chart in the current worksheet"],
-            ["Ctrl+F1", "Show or hide the ribbon"],
-            ["Ctrl+Shift+U", "Expand or collapse the formula bar"],
-            ["Ctrl+`", "Show or hide formulas"],
-            ["Alt+W+F", "Freeze panes"],
-            ["Alt+Page Down", "Move one screen to the right in worksheet"],
-            ["Alt+Page Up", "Move one screen to the left in worksheet"],
-            ["Ctrl+F2", "Show print preview"],
-          ],
-        },
-        analysis: {
-          title: "Data Analysis & PivotTable",
-          description: "Analyze data with powerful shortcuts",
-          shortcuts: [
-            ["Alt+D+P", "Create a PivotTable"],
-            ["Alt+N+V", "Create a PivotChart"],
-            ["Alt+D+F", "Create a filter"],
-            ["Alt+D+S+S", "Open the Sort dialog box"],
-            ["Alt+D+S+F", "Sort by specific value"],
-            ["Alt+A+M", "Open the Data Model dialog box"],
-            ["Alt+A+W", "Create a Power View report"],
-            ["Alt+A+Q", "Create a Power Query"],
-            ["Alt+A+P", "Create a Power Pivot"],
-          ],
-        },
-        misc: {
-          title: "Miscellaneous Shortcuts",
-          description: "Other useful shortcuts to boost productivity",
-          shortcuts: [
-            ["Alt", "Show keyboard shortcuts (Key Tips)"],
-            ["F1", "Open Excel Help"],
-            ["Alt+Q", "Go to 'Tell me what you want to do' field"],
-            ["Ctrl+F1", "Show or hide the ribbon"],
-            ["Alt+F, T", "Open Excel Options"],
-            ["Alt+Enter", "Start a new line in the same cell"],
-            ["Ctrl+Shift+~", "Apply the General number format"],
-            ["Ctrl+Shift+(", "Unhide rows"],
-            ["Ctrl+Shift+)", "Unhide columns"],
-            ["Ctrl+8", "Toggle outline symbols display"],
-          ],
-        },
-      };
+  <div class="container">
+    <input type="text" id="search-input" placeholder="Search for shortcuts..." />
 
-      // Function to initialize the page
-      function init() {
-        createNavigation();
-        createCategoryCards();
-        createSections();
-        setupEventListeners();
+    <section id="home" class="section active">
+      <div class="home-section">
+        <h2 class="home-title">Master Excel with Keyboard Shortcuts</h2>
+        <p>
+          Click on any category below to see its shortcuts or use the
+          navigation bar above
+        </p>
+      </div>
+
+      <div class="category-cards" id="category-cards">
+        <!-- Category cards will be generated by JavaScript -->
+      </div>
+    </section>
+
+    <!-- All sections will be generated by JavaScript -->
+    <div id="sections-container"></div>
+  </div>
+
+  <a href="#" class="back-to-top" id="back-to-top">↑</a>
+
+  <footer>
+    <div class="container">
+      <p>Excel Shortcuts - Comprehensive Guide</p>
+    </div>
+  </footer>
+
+  <script>
+    // Data structure to store all shortcut categories and their shortcuts
+    const shortcutData = {
+      navigation: {
+        title: "Navigation Shortcuts",
+        description:
+          "Quickly move around your worksheet with these navigation shortcuts",
+        shortcuts: [
+          ["Arrow Keys", "Move one cell in the direction of the arrow"],
+          ["Tab", "Move one cell to the right"],
+          ["Shift+Tab", "Move one cell to the left"],
+          ["Enter", "Move one cell down"],
+          ["Shift+Enter", "Move one cell up"],
+          ["Home", "Move to beginning of row"],
+          ["Ctrl+Home", "Move to beginning of worksheet (cell A1)"],
+          ["Ctrl+End", "Move to last used cell in worksheet"],
+          ["Page Up", "Move one screen up"],
+          ["Page Down", "Move one screen down"],
+          ["Alt+Page Up", "Move one screen to the left"],
+          ["Alt+Page Down", "Move one screen to the right"],
+          ["Ctrl+Arrow Key", "Move to the edge of current data region"],
+          ["Ctrl+G or F5", "Open Go To dialog box"],
+          [
+            "F6",
+            "Switch between worksheet, ribbon, task pane, and zoom controls",
+          ],
+          ["Ctrl+Tab", "Switch between open workbooks"],
+        ],
+      },
+      selection: {
+        title: "Selection Shortcuts",
+        description: "Efficiently select cells, rows, columns, and ranges",
+        shortcuts: [
+          ["Shift+Arrow Key", "Extend selection by one cell"],
+          [
+            "Ctrl+Shift+Arrow Key",
+            "Extend selection to last cell with data in row/column",
+          ],
+          ["Shift+Home", "Select from current cell to beginning of row"],
+          [
+            "Ctrl+Shift+Home",
+            "Select from current cell to beginning of worksheet",
+          ],
+          [
+            "Ctrl+Shift+End",
+            "Select from current cell to last used cell in worksheet",
+          ],
+          ["Ctrl+Spacebar", "Select entire column"],
+          ["Shift+Spacebar", "Select entire row"],
+          ["Ctrl+A", "Select entire worksheet"],
+          ["Ctrl+Shift+O", "Select all cells with comments"],
+          ["Ctrl+\\", "Select visible cells in current row"],
+          ["Ctrl+Shift+\\", "Select visible cells in current column"],
+          ["Ctrl+Shift+*", "Select current region around active cell"],
+          ["Alt+;", "Select visible cells only"],
+          ["F8", "Turn extend mode on/off (for selection)"],
+          ["Shift+F8", "Add another range to selection (non-adjacent)"],
+        ],
+      },
+      editing: {
+        title: "Editing Shortcuts",
+        description: "Edit and manipulate cell content faster",
+        shortcuts: [
+          ["F2", "Edit the active cell"],
+          ["Alt+Enter", "Start a new line in the same cell"],
+          ["Enter", "Complete cell entry and move down"],
+          ["Esc", "Cancel cell entry"],
+          [
+            "Backspace",
+            "Delete character to the left of insertion point or delete selection",
+          ],
+          [
+            "Delete",
+            "Delete character to the right of insertion point or delete selection",
+          ],
+          ["Ctrl+Delete", "Delete text to end of line"],
+          ["Ctrl+Z", "Undo last action"],
+          ["Ctrl+Y", "Redo last action"],
+          ["Ctrl+X", "Cut selected cells"],
+          ["Ctrl+C", "Copy selected cells"],
+          ["Ctrl+V", "Paste content from clipboard"],
+          ["Ctrl+Alt+V", "Open Paste Special dialog box"],
+          ["Ctrl+D", "Fill down (copy content from cell above)"],
+          ["Ctrl+R", "Fill right (copy content from cell to left)"],
+          ["Ctrl+'", "Copy formula from cell above"],
+          ["Ctrl+-", "Delete selected rows or columns"],
+          ["Ctrl+Shift++", "Insert new rows or columns"],
+          ["Ctrl+;", "Enter current date"],
+          ["Ctrl+Shift+:", "Enter current time"],
+          ["Alt+Down Arrow", "Display AutoComplete list"],
+          ["Ctrl+K", "Insert hyperlink"],
+        ],
+      },
+      formatting: {
+        title: "Formatting Shortcuts",
+        description: "Apply formatting to cells quickly",
+        shortcuts: [
+          ["Ctrl+1", "Open Format Cells dialog box"],
+          ["Ctrl+B", "Apply or remove bold formatting"],
+          ["Ctrl+I", "Apply or remove italic formatting"],
+          ["Ctrl+U", "Apply or remove underline"],
+          ["Ctrl+5", "Apply or remove strikethrough"],
+          ["Alt+'", "Display Style dialog box"],
+          ["Ctrl+Shift+~", "Apply General number format"],
+          ["Ctrl+Shift+$", "Apply Currency format with two decimal places"],
+          ["Ctrl+Shift+%", "Apply Percentage format with no decimal places"],
+          [
+            "Ctrl+Shift+^",
+            "Apply Scientific number format with two decimal places",
+          ],
+          ["Ctrl+Shift+#", "Apply Date format (day, month, year)"],
+          ["Ctrl+Shift+@", "Apply Time format (hour:minute AM/PM)"],
+          [
+            "Ctrl+Shift+!",
+            "Apply Number format with two decimal places and thousands separator",
+          ],
+          ["Ctrl+Shift+&", "Apply outline border to selected cells"],
+          ["Ctrl+Shift+_", "Remove outline border"],
+          ["Ctrl+9", "Hide selected rows"],
+          ["Ctrl+0", "Hide selected columns"],
+          ["Ctrl+Shift+9", "Unhide rows"],
+          ["Ctrl+Shift+0", "Unhide columns"],
+        ],
+      },
+      data: {
+        title: "Data & Cell Content",
+        description: "Work with data more efficiently",
+        shortcuts: [
+          ["Alt+Down Arrow", "Open dropdown list for current cell"],
+          ["Alt+= or Alt+Shift+=", "AutoSum selected cells"],
+          ["Ctrl+Shift+L", "Toggle filter"],
+          ["Ctrl+T", "Create or format a table"],
+          ["Shift+F2", "Insert or edit cell comment"],
+          ["F4", "Repeat last action"],
+          ["F7", "Check spelling"],
+          ["Shift+F3", "Open the Insert Function dialog box"],
+          ["Ctrl+Shift+U", "Expand or collapse formula bar"],
+          ["Ctrl+F3", "Define a name"],
+          ["Ctrl+E", "Flash Fill"],
+        ],
+      },
+      formula: {
+        title: "Formula Shortcuts",
+        description: "Create and manage formulas like a pro",
+        shortcuts: [
+          ["=", "Start a formula"],
+          ["Alt+=", "Insert AutoSum formula"],
+          ["Ctrl+Shift+Enter", "Enter array formula"],
+          ["F3", "Paste a defined name into a formula"],
+          ["F9", "Calculate all worksheets in all open workbooks"],
+          ["Shift+F9", "Calculate active worksheet"],
+          ["Ctrl+Alt+F9", "Force calculate all worksheets"],
+          ["Ctrl+Alt+Shift+F9", "Recalculate all formulas"],
+          ["Ctrl+`", "Toggle between displaying cell values and formulas"],
+          [
+            "Ctrl+[",
+            "Select all cells directly referenced by formulas in selection",
+          ],
+          [
+            "Ctrl+]",
+            "Select cells containing formulas that reference the active cell",
+          ],
+          ["F4 (in formula)", "Cycle through absolute/relative references"],
+        ],
+      },
+      workbook: {
+        title: "Workbook & Worksheet",
+        description: "Manage your workbooks and worksheets",
+        shortcuts: [
+          ["Ctrl+N", "Create a new workbook"],
+          ["Ctrl+O", "Open existing workbook"],
+          ["Ctrl+S", "Save workbook"],
+          ["F12", "Save As"],
+          ["Ctrl+W", "Close workbook"],
+          ["Ctrl+F4", "Close Excel"],
+          ["Ctrl+P", "Print"],
+          ["Ctrl+F2", "Print preview"],
+          ["F11 or Alt+F1", "Create chart from selected data"],
+          ["Alt+F8", "Open Macro dialog box"],
+          ["Alt+F11", "Open Visual Basic Editor"],
+          ["Ctrl+Page Up", "Move to previous worksheet"],
+          ["Ctrl+Page Down", "Move to next worksheet"],
+          ["Shift+F11", "Insert new worksheet"],
+          ["Ctrl+Shift+Tab", "Switch to previous workbook"],
+          ["Alt+Shift+F1", "Insert new worksheet"],
+          ["Ctrl+F", "Find"],
+          ["Ctrl+H", "Replace"],
+        ],
+      },
+      display: {
+        title: "Display & View",
+        description: "Control how Excel displays your data",
+        shortcuts: [
+          ["F11", "Create a chart"],
+          ["Alt+F1", "Create a chart in the current worksheet"],
+          ["Ctrl+F1", "Show or hide the ribbon"],
+          ["Ctrl+Shift+U", "Expand or collapse the formula bar"],
+          ["Ctrl+`", "Show or hide formulas"],
+          ["Alt+W+F", "Freeze panes"],
+          ["Alt+Page Down", "Move one screen to the right in worksheet"],
+          ["Alt+Page Up", "Move one screen to the left in worksheet"],
+          ["Ctrl+F2", "Show print preview"],
+        ],
+      },
+      analysis: {
+        title: "Data Analysis & PivotTable",
+        description: "Analyze data with powerful shortcuts",
+        shortcuts: [
+          ["Alt+D+P", "Create a PivotTable"],
+          ["Alt+N+V", "Create a PivotChart"],
+          ["Alt+D+F", "Create a filter"],
+          ["Alt+D+S+S", "Open the Sort dialog box"],
+          ["Alt+D+S+F", "Sort by specific value"],
+          ["Alt+A+M", "Open the Data Model dialog box"],
+          ["Alt+A+W", "Create a Power View report"],
+          ["Alt+A+Q", "Create a Power Query"],
+          ["Alt+A+P", "Create a Power Pivot"],
+        ],
+      },
+      misc: {
+        title: "Miscellaneous Shortcuts",
+        description: "Other useful shortcuts to boost productivity",
+        shortcuts: [
+          ["Alt", "Show keyboard shortcuts (Key Tips)"],
+          ["F1", "Open Excel Help"],
+          ["Alt+Q", "Go to 'Tell me what you want to do' field"],
+          ["Ctrl+F1", "Show or hide the ribbon"],
+          ["Alt+F, T", "Open Excel Options"],
+          ["Alt+Enter", "Start a new line in the same cell"],
+          ["Ctrl+Shift+~", "Apply the General number format"],
+          ["Ctrl+Shift+(", "Unhide rows"],
+          ["Ctrl+Shift+)", "Unhide columns"],
+          ["Ctrl+8", "Toggle outline symbols display"],
+        ],
+      },
+    };
+
+    // Function to initialize the page
+    function init() {
+      createNavigation();
+      createCategoryCards();
+      createSections();
+      setupEventListeners();
+    }
+
+    // Create navigation buttons
+    function createNavigation() {
+      const navButtons = document.getElementById("nav-buttons");
+      let buttonsHTML =
+        '<button class="nav-btn active" data-section="home">Home</button>';
+
+      for (const key in shortcutData) {
+        buttonsHTML += `<button class="nav-btn" data-section="${key}">${shortcutData[key].title.split(" ")[0]}</button>`;
       }
 
-      // Create navigation buttons
-      function createNavigation() {
-        const navButtons = document.getElementById("nav-buttons");
-        let buttonsHTML =
-          '<button class="nav-btn active" data-section="home">Home</button>';
+      navButtons.innerHTML = buttonsHTML;
+    }
 
-        for (const key in shortcutData) {
-          buttonsHTML += `<button class="nav-btn" data-section="${key}">${shortcutData[key].title.split(" ")[0]}</button>`;
-        }
+    // Create category cards
+    function createCategoryCards() {
+      const cardContainer = document.getElementById("category-cards");
+      let cardsHTML = "";
 
-        navButtons.innerHTML = buttonsHTML;
-      }
-
-      // Create category cards
-      function createCategoryCards() {
-        const cardContainer = document.getElementById("category-cards");
-        let cardsHTML = "";
-
-        for (const key in shortcutData) {
-          cardsHTML += `
+      for (const key in shortcutData) {
+        cardsHTML += `
                     <div class="category-card" data-section="${key}">
                         <h3>${shortcutData[key].title}</h3>
                         <p>${shortcutData[key].description}</p>
                     </div>
                 `;
-        }
-
-        cardContainer.innerHTML = cardsHTML;
       }
 
-      // Create sections with shortcut tables
-      function createSections() {
-        const sectionsContainer = document.getElementById("sections-container");
-        let sectionsHTML = "";
+      cardContainer.innerHTML = cardsHTML;
+    }
 
-        for (const key in shortcutData) {
-          sectionsHTML += `
+    // Create sections with shortcut tables
+    function createSections() {
+      const sectionsContainer = document.getElementById("sections-container");
+      let sectionsHTML = "";
+
+      for (const key in shortcutData) {
+        sectionsHTML += `
                     <section id="${key}" class="section">
                         <h2 class="section-title">${shortcutData[key].title}</h2>
                         <table>
@@ -560,113 +667,114 @@
                             </thead>
                             <tbody>
                                 ${shortcutData[key].shortcuts
-                                  .map(
-                                    (shortcut) => `
+            .map(
+              (shortcut) => `
                                     <tr>
                                         <td>${shortcut[0]}</td>
                                         <td>${shortcut[1]}</td>
                                     </tr>
                                 `
-                                  )
-                                  .join("")}
+            )
+            .join("")}
                             </tbody>
                         </table>
                     </section>
                 `;
+      }
+
+      sectionsContainer.innerHTML = sectionsHTML;
+    }
+
+    // Setup event listeners
+    function setupEventListeners() {
+      // Navigation buttons
+      document.querySelectorAll(".nav-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          showSection(btn.dataset.section);
+        });
+      });
+
+      // Category cards
+      document.querySelectorAll(".category-card").forEach((card) => {
+        card.addEventListener("click", () => {
+          showSection(card.dataset.section);
+        });
+      });
+
+      // Search functionality
+      document
+        .getElementById("search-input")
+        .addEventListener("input", handleSearch);
+
+      // Back to top button
+      const backToTopBtn = document.getElementById("back-to-top");
+      window.addEventListener("scroll", () => {
+        if (window.pageYOffset > 300) {
+          backToTopBtn.style.display = "block";
+        } else {
+          backToTopBtn.style.display = "none";
         }
+      });
 
-        sectionsContainer.innerHTML = sectionsHTML;
-      }
-
-      // Setup event listeners
-      function setupEventListeners() {
-        // Navigation buttons
-        document.querySelectorAll(".nav-btn").forEach((btn) => {
-          btn.addEventListener("click", () => {
-            showSection(btn.dataset.section);
-          });
-        });
-
-        // Category cards
-        document.querySelectorAll(".category-card").forEach((card) => {
-          card.addEventListener("click", () => {
-            showSection(card.dataset.section);
-          });
-        });
-
-        // Search functionality
-        document
-          .getElementById("search-input")
-          .addEventListener("input", handleSearch);
-
-        // Back to top button
-        const backToTopBtn = document.getElementById("back-to-top");
-        window.addEventListener("scroll", () => {
-          if (window.pageYOffset > 300) {
-            backToTopBtn.style.display = "block";
-          } else {
-            backToTopBtn.style.display = "none";
-          }
-        });
-
-        backToTopBtn.addEventListener("click", (e) => {
-          e.preventDefault();
-          window.scrollTo({ top: 0, behavior: "smooth" });
-        });
-      }
-
-      // Show section function
-      function showSection(sectionId) {
-        // Hide all sections and remove active class from buttons
-        document.querySelectorAll(".section").forEach((section) => {
-          section.classList.remove("active");
-        });
-
-        document.querySelectorAll(".nav-btn").forEach((btn) => {
-          btn.classList.remove("active");
-        });
-
-        // Show selected section and add active class to button
-        document.getElementById(sectionId).classList.add("active");
-        document
-          .querySelector(`.nav-btn[data-section="${sectionId}"]`)
-          .classList.add("active");
-
-        // Scroll to top of section
+      backToTopBtn.addEventListener("click", (e) => {
+        e.preventDefault();
         window.scrollTo({ top: 0, behavior: "smooth" });
-      }
+      });
+    }
 
-      // Handle search function
-      function handleSearch() {
-        const searchTerm = document
-          .getElementById("search-input")
-          .value.toLowerCase();
+    // Show section function
+    function showSection(sectionId) {
+      // Hide all sections and remove active class from buttons
+      document.querySelectorAll(".section").forEach((section) => {
+        section.classList.remove("active");
+      });
 
-        if (searchTerm.length < 2) {
-          // Show all rows if search term is too short
-          document.querySelectorAll("tr").forEach((row) => {
-            row.style.display = "";
-          });
-          return;
-        }
+      document.querySelectorAll(".nav-btn").forEach((btn) => {
+        btn.classList.remove("active");
+      });
 
-        document.querySelectorAll("table tbody tr").forEach((row) => {
-          const shortcut = row.children[0].textContent.toLowerCase();
-          const description = row.children[1].textContent.toLowerCase();
+      // Show selected section and add active class to button
+      document.getElementById(sectionId).classList.add("active");
+      document
+        .querySelector(`.nav-btn[data-section="${sectionId}"]`)
+        .classList.add("active");
 
-          if (
-            shortcut.includes(searchTerm) ||
-            description.includes(searchTerm)
-          ) {
-            row.style.display = "";
-          } else {
-            row.style.display = "none";
-          }
+      // Scroll to top of section
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    // Handle search function
+    function handleSearch() {
+      const searchTerm = document
+        .getElementById("search-input")
+        .value.toLowerCase();
+
+      if (searchTerm.length < 2) {
+        // Show all rows if search term is too short
+        document.querySelectorAll("tr").forEach((row) => {
+          row.style.display = "";
         });
+        return;
       }
 
-      // Initialize on page load
-      document.addEventListener("DOMContentLoaded", init);
-    </script>
-  </body>
+      document.querySelectorAll("table tbody tr").forEach((row) => {
+        const shortcut = row.children[0].textContent.toLowerCase();
+        const description = row.children[1].textContent.toLowerCase();
+
+        if (
+          shortcut.includes(searchTerm) ||
+          description.includes(searchTerm)
+        ) {
+          row.style.display = "";
+        } else {
+          row.style.display = "none";
+        }
+      });
+    }
+
+    // Initialize on page load
+    document.addEventListener("DOMContentLoaded", init);
+  </script>
+</body>
+
 </html>
